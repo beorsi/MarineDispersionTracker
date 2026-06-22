@@ -4,6 +4,7 @@ from API import requisitions as req
 import pandas as pd
 import json
 
+#data precisa de ser no formato AAAA-MM-DD
 
 def occurrencesProcessed(scientificName, startDate=None, endDate=None):
     occurrence = req.getOccurrence(scientificName,startDate,endDate)
