@@ -9,16 +9,17 @@ async def main(page: flet.Page):
     page.window.top = 0
     page.bgcolor = "#0D2137"
     page.fonts= {
-      "Intel" : "fonts/IntelOneMono-VariableFont_wght.ttf"
+      "Intel" : "assets/fonts/IntelOneMono-VariableFont_wght.ttf"
     }
     page.padding = 0
     page.add(
     flet.Column(
         controls=[
             flet.Row(
+                spacing = 0,
                 controls=[
                     flet.Container(
-                        width=1920,
+                        width=1580,
                         height=60,
                         padding = 0,
                         alignment = flet.Alignment.CENTER,
