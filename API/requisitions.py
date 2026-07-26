@@ -2,7 +2,6 @@ import requests as rq
 import json
 
 url = "https://api.obis.org/v3/"
-size = 10000
 
 def getTaxon(scientificName):
     response = rq.get(url + "taxon/" + scientificName)
@@ -15,9 +14,9 @@ def getTaxon(scientificName):
         return
 
 
-def getOccurrence(scientificName, startDate=None, endDate=None):
+def getOccurrence(scientificName, startDate=None, endDate=None, size=1000):
 
-    params = {"scientificname": scientificName, "size":size}
+    params = {"scientificname": scientificName, "size": size}
     
     if startDate:
         params["startdate"] = startDate
@@ -64,7 +63,7 @@ def getDatabankInfo(scientificName):
         return
 
 if __name__ == "__main__":
-    req = getOccurrence("Rhincodon typus")
+    req = getTaxon("Rhincodon typus")
     
     with open("./API/output.json", "w", encoding="utf-8") as f:
         json.dump(req, f, indent=4, ensure_ascii=False)
