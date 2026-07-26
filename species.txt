@@ -6,5 +6,5 @@ hammerhead shark - Sphyrna zygaena
 thresher shark - Alopias vulpinus
 killer whale - Orcinus orca
 humpback whale - Megaptera novaeangliae
-mako sharks - Isurus oxyrinchus
-backtip reef shark - Carcharhinus melanopterus
+shortfin mako shark - Isurus oxyrinchus
+blacktip reef shark - Carcharhinus melanopterus
