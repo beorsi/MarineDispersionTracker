@@ -38,7 +38,7 @@ async def main(page: flet.Page):
                     flet.Container(
                         width=1820,
                         height=1020,
-                        bgcolor=flet.Colors.GREEN
+                        bgcolor=flet.Colors.RED
                     )
                 ]
             )
