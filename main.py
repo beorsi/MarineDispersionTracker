@@ -2,6 +2,7 @@ import flet as flet
 import asyncio
 from UI.speciesCard import build_species_card
 from UI.sidebar import build_sidebar
+from UI.speciesMap import build_species_map
 
 async def main(page: flet.Page):
     page.window.width = 1920
@@ -17,19 +18,15 @@ async def main(page: flet.Page):
 
     selected_species = "Physeter macrocephalus"
 
-    sidebar_container = flet.Container(width=300, height=1020)
-    card_area = flet.Container(
-        width=1620,
-        height=1020,
-        bgcolor="#0D2137",
-        padding=50,
-        alignment=flet.Alignment(1, -1),
-    )
+    sidebar_container = flet.Container(width=300)
+    map_area = flet.Container(expand=True, bgcolor="#0D2137", padding=flet.Padding(left=24, top=24, right=24, bottom=24), alignment=flet.Alignment(0, 0))
+    card_area = flet.Container(width=530, bgcolor="#0D2137", padding=flet.Padding(left=0, top=24, right=24, bottom=24))
 
     def on_select(scientific_name: str):
         nonlocal selected_species
         selected_species = scientific_name
         sidebar_container.content = build_sidebar(selected_species, on_select, page).content
+        map_area.content = build_species_map(selected_species, page)
         card_area.content = build_species_card(selected_species, page)
         page.update()
 
@@ -37,23 +34,20 @@ async def main(page: flet.Page):
 
     page.add(
         flet.Column(
+            expand=True,
+            spacing=0,
             controls=[
-                flet.Row(
-                    spacing=0,
-                    controls=[
-                        flet.Container(
-                            width=1880,
-                            height=60,
-                            padding=0,
-                            alignment=flet.Alignment(0, 0),
-                            content=flet.Text("Marine Dispersion Tracker", font_family="Intel", size=32)
-                        )
-                    ]
+                flet.Container(
+                    height=60,
+                    alignment=flet.Alignment(0, 0),
+                    content=flet.Text("Marine Dispersion Tracker", font_family="Intel", size=32)
                 ),
                 flet.Row(
                     spacing=0,
+                    expand=True,
                     controls=[
                         sidebar_container,
+                        map_area,
                         card_area,
                     ]
                 )
@@ -62,6 +56,7 @@ async def main(page: flet.Page):
     )
 
     await asyncio.sleep(0.1)
+    map_area.content = build_species_map(selected_species, page)
     card_area.content = build_species_card(selected_species, page)
     page.update()
 

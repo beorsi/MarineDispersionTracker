@@ -16,7 +16,7 @@ def getTaxon(scientificName):
 
 def getOccurrence(scientificName, startDate=None, endDate=None, size=1000):
 
-    params = {"scientificname": scientificName, "size": size}
+    params = {"scientificname": scientificName, "size": size, "sort":"date_end", "dir":"desc"}
     
     if startDate:
         params["startdate"] = startDate
