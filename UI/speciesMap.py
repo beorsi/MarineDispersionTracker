@@ -122,7 +122,7 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
         clip_behavior=flet.ClipBehavior.HARD_EDGE,
         content=flet.Image(
             src=species_data["image"] if species_data else "",
-            fit=flet.BoxFit.COVER,
+            fit=flet.BoxFit.CONTAIN,
             expand=True,
             height=280,
         ),
