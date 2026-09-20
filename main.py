@@ -5,8 +5,6 @@ from UI.sidebar import build_sidebar
 from UI.speciesMap import build_species_map
 
 async def main(page: flet.Page):
-    page.window.width = 1920
-    page.window.height = 1080
     page.window.resizable = True
     page.window.left = 0
     page.window.top = 0
@@ -18,9 +16,9 @@ async def main(page: flet.Page):
 
     selected_species = "Physeter macrocephalus"
 
-    sidebar_container = flet.Container(width=300)
+    sidebar_container = flet.Container(width=300, expand=True)
     map_area = flet.Container(expand=True, bgcolor="#0D2137", padding=flet.Padding(left=24, top=24, right=24, bottom=24), alignment=flet.Alignment(0, 0))
-    card_area = flet.Container(width=530, bgcolor="#0D2137", padding=flet.Padding(left=0, top=24, right=24, bottom=24))
+    card_area = flet.Container(width=530, expand=True, bgcolor="#0D2137", padding=flet.Padding(left=0, top=24, right=24, bottom=24))
 
     def on_select(scientific_name: str):
         nonlocal selected_species

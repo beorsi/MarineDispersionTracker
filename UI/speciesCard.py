@@ -84,7 +84,7 @@ def build_species_card(scientific_name: str, page: flet.Page) -> flet.Container:
 
     card = flet.Container(
         width=CARD_WIDTH,
-        height=870,
+        expand=True,
         bgcolor=COLOR_BG,
         border_radius=16,
         padding=24,

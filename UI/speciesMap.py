@@ -46,7 +46,6 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     stack = flet.Stack(expand=True, controls=[flet_map, loading_overlay])
 
     map_container = flet.Container(
-        width=625,
         height=400,
         bgcolor=COLOR_BG,
         border_radius=flet.BorderRadius(top_left=16, top_right=16, bottom_left=0, bottom_right=0),
@@ -57,7 +56,6 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     count_text = flet.Text("—", size=13, color=COLOR_TEXT, font_family="Intel", weight=flet.FontWeight.BOLD)
 
     legend = flet.Container(
-        width=625,
         bgcolor=COLOR_SURFACE,
         border_radius=flet.BorderRadius(top_left=0, top_right=0, bottom_left=16, bottom_right=16),
         padding=flet.Padding(left=16, top=12, right=16, bottom=12),
@@ -118,7 +116,6 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     page.run_thread(load_map)
 
     image = flet.Container(
-        width=625,
         height=280,
         margin=flet.Margin(left=0, top=24, right=0, bottom=0),
         border_radius=16,
@@ -126,7 +123,7 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
         content=flet.Image(
             src=species_data["image"] if species_data else "",
             fit=flet.BoxFit.COVER,
-            width=625,
+            expand=True,
             height=280,
         ),
     )
@@ -139,5 +136,7 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
 
     return flet.Column(
         spacing=0,
+        horizontal_alignment=flet.CrossAxisAlignment.STRETCH,
+        scroll=flet.ScrollMode.AUTO,
         controls=[title, map_container, legend, image],
     )
