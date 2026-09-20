@@ -71,7 +71,6 @@ def build_sidebar(selected: str, on_select, page: flet.Page) -> flet.Container:
         padding=flet.Padding(left=0, top=20, right=12, bottom=20),
         content=flet.Column(
             spacing=4,
-            scroll=flet.ScrollMode.AUTO,
             controls=[
                 flet.Container(
                     padding=flet.Padding(left=16, top=0, right=0, bottom=12),
