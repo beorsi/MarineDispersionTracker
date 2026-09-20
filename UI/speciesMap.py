@@ -129,7 +129,6 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     )
 
     title = flet.Container(
-        width=625,
         margin=flet.Margin(left=0, top=0, right=0, bottom=8),
         content=flet.Text("Top 1,000 most recent occurrences", size=12, color=COLOR_MUTED, font_family="Intel"),
     )

@@ -66,8 +66,7 @@ def build_sidebar(selected: str, on_select, page: flet.Page) -> flet.Container:
     items = [make_item(sn, data["common_name"]) for sn, data in SPECIES.items()]
 
     return flet.Container(
-        width=300,
-        expand=True,
+        width=220,
         bgcolor=COLOR_BG,
         padding=flet.Padding(left=0, top=20, right=12, bottom=20),
         content=flet.Column(

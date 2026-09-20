@@ -16,7 +16,7 @@ async def main(page: flet.Page):
 
     selected_species = "Physeter macrocephalus"
 
-    sidebar_container = flet.Container(width=300, expand=True)
+    sidebar_container = flet.Container(width=220)
     map_area = flet.Container(expand=True, bgcolor="#0D2137", padding=flet.Padding(left=24, top=24, right=24, bottom=24), alignment=flet.Alignment(0, 0))
     card_area = flet.Container(width=530, expand=True, bgcolor="#0D2137", padding=flet.Padding(left=0, top=24, right=24, bottom=24))
 
