@@ -9,11 +9,15 @@ COLOR_ACCENT = "#4DB8D4"
 COLOR_MUTED = "#7BAFC4"
 COLOR_TEXT = "#E8F4F8"
 COLOR_RED = "#FF4444"
+DESKTOP_BREAKPOINT = 1600
 
 
 def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     species_data = SPECIES.get(scientific_name)
     common_name = species_data["common_name"] if species_data else "Unknown species"
+    is_desktop = (page.width or 0) >= DESKTOP_BREAKPOINT
+    map_height = 400 if is_desktop else 320
+    image_height = 380 if is_desktop else 220
 
     marker_layer = map.MarkerLayer(markers=[])
 
@@ -46,7 +50,7 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     stack = flet.Stack(expand=True, controls=[flet_map, loading_overlay])
 
     map_container = flet.Container(
-        height=320,
+        height=map_height,
         bgcolor=COLOR_BG,
         border_radius=flet.BorderRadius(top_left=16, top_right=16, bottom_left=0, bottom_right=0),
         clip_behavior=flet.ClipBehavior.HARD_EDGE,
@@ -116,7 +120,7 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     page.run_thread(load_map)
 
     image = flet.Container(
-        height=180,
+        height=image_height,
         margin=flet.Margin(left=0, top=24, right=0, bottom=0),
         border_radius=16,
         clip_behavior=flet.ClipBehavior.HARD_EDGE,
@@ -124,7 +128,7 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
             src=species_data["image"] if species_data else "",
             fit=flet.BoxFit.CONTAIN,
             expand=True,
-            height=180,
+            height=image_height,
         ),
     )
 
@@ -134,6 +138,7 @@ def build_species_map(scientific_name: str, page: flet.Page) -> flet.Column:
     )
 
     return flet.Column(
+        expand=True,
         spacing=0,
         horizontal_alignment=flet.CrossAxisAlignment.STRETCH,
         controls=[title, map_container, legend, image],
